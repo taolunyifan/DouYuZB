@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ktH-6n-bCv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cgV-LD-MDe">
+            <objects>
+                <tabBarController id="ktH-6n-bCv" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RV1-WF-BwD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Vmo-X4-pL3" kind="relationship" relationship="viewControllers" id="qmP-Jz-i7w"/>
+                        <segue destination="VF6-Em-XTM" kind="relationship" relationship="viewControllers" id="gIm-2J-dgA"/>
+                        <segue destination="WgO-j8-wEd" kind="relationship" relationship="viewControllers" id="br9-7R-9Sn"/>
+                        <segue destination="LMr-7L-pas" kind="relationship" relationship="viewControllers" id="e4U-U5-6Gx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Npz-Mx-97K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1215" y="-327"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5VA-6N-ekq">
+            <objects>
+                <viewController id="H2H-6L-u1W" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zjm-Ur-DPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JT2-1X-iSE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qq0-C6-Nag"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFI-SW-n0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="513" y="-134"/>
+        </scene>
+        <!--关注-->
+        <scene sceneID="v5V-Mi-PMS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WgO-j8-wEd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="关注" image="tabFocus" selectedImage="tabFocusHL" id="CVc-pB-bqS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VI8-jQ-pIc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H2H-6L-u1W" kind="relationship" relationship="rootViewController" id="WIQ-xy-b4t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uM-c7-nJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="-134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QJJ-Ln-ZQD">
+            <objects>
+                <viewController id="FTz-OD-XKT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fN8-mx-c1s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NHr-Le-Sd9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yCH-Nl-Tef"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X6D-fO-bFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="513" y="597"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="edh-0O-Eel">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LMr-7L-pas" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="tabMine" selectedImage="tabMineHL" id="vB6-6Q-Tso"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PqG-NY-uxG">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FTz-OD-XKT" kind="relationship" relationship="rootViewController" id="DnL-2E-hOP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EiD-x0-XmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-263" y="597"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="YyW-np-c0w">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="Vmo-X4-pL3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RWn-n1-vhH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfv-0C-1WY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="-1450"/>
+        </scene>
+        <!--Live-->
+        <scene sceneID="1WH-Ym-ctp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Live" id="VF6-Em-XTM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3Yp-aL-Cq4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G9g-l6-N6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="-797"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabFocus" width="24" height="24"/>
+        <image name="tabFocusHL" width="24" height="24"/>
+        <image name="tabMine" width="24" height="24"/>
+        <image name="tabMineHL" width="24" height="24"/>
+    </resources>
+</document>
