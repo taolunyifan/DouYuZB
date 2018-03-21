@@ -9,14 +9,34 @@
 import UIKit
 import SnapKit
 
+private let kTitleViewH:CGFloat = 40
 class HomeViewController: UIViewController {
-
+    private lazy var pageTitleView:TitleView = {
+        let titleViewFrame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH, width: kScreenW, height: kTitleViewH)
+        let titles = ["推荐","游戏","娱乐","趣玩"]
+        let titleView = TitleView(frame: titleViewFrame, titles: titles)
+        return titleView
+    }()
+    private lazy var subVcs:[UIViewController] = [UIViewController]()
+    private lazy var pageView:PageView = {
+        let frame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH+kTitleViewH, width: kScreenW, height: kScreenH-kStatusBarH-kNavigationBarH-kTitleViewH-44)
+        for _ in 0..<4{
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.randomColor()
+            subVcs.append(vc)
+        }
+        let pageView = PageView(frame: frame, childVcs: subVcs, superVc: self)
+        pageView.backgroundColor = UIColor.purple
+        return pageView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        automaticallyAdjustsScrollViewInsets = false
         setUI()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +59,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController{
     private func setUI(){
         initNavBar()
+        view.addSubview(pageTitleView)
+        view.addSubview(pageView)
     }
     private func initNavBar(){
         self.navigationController?.navigationBar.barTintColor = UIColor.orange
@@ -67,13 +89,13 @@ extension HomeViewController{
             make.top.equalTo(searchView).offset(7)
         }
         
-        let qrImageV = UIImageView(image: UIImage(named: "qr_er_btn"))
-        searchView.addSubview(qrImageV)
+//        let qrImageV = UIImageView(image: UIImage(named: "qr_er_btn"))
+//        searchView.addSubview(qrImageV)
 //        qrImageV.frame = CGRect(x: searchView.frame.size.width-7-18, y: 7, width: 18, height: 18)
-        qrImageV.snp.makeConstraints { (make) -> Void in
-            make.width.height.equalTo(18)
-            make.right.equalTo(searchView)
-            make.top.equalTo(searchView).offset(7)
-        }
+//        qrImageV.snp.makeConstraints { (make) -> Void in
+//            make.width.height.equalTo(18)
+//            make.right.equalTo(searchView)
+//            make.top.equalTo(searchView).offset(7)
+//        }
     }
 }
