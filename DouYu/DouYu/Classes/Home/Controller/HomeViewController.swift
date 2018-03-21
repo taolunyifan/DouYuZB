@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController {
 
@@ -14,6 +15,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +35,45 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+extension HomeViewController{
+    private func setUI(){
+        initNavBar()
+    }
+    private func initNavBar(){
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange
+        let size = CGSize(width: 10, height: 10)
+        let item1 = UIBarButtonItem(imageName: "homeLogoIcon")
+        let item2 = UIBarButtonItem(imageName: "home_newGameicon", hightImageName: "home_newGameicon_clicked", size: size)
+        let item3 = UIBarButtonItem(imageName: "viewHistoryIcon", hightImageName: "viewHistoryIconHL", size: size)
+        navigationItem.leftBarButtonItem = item1
+        navigationItem.rightBarButtonItems = [item3,item2]
+        
+        let searchView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 32))
+        searchView.layer.cornerRadius = 16
+        searchView.backgroundColor = UIColor.white
+//        searchView.clipsToBounds = true
+        navigationItem.titleView = searchView
+        searchView.snp.makeConstraints { (make) -> Void in
+            make.height.equalTo(32)
+        }
+        
+        let searchImageV = UIImageView(image: UIImage(named: "searchIconDark"))
+//        searchImageV.frame = CGRect(x: 7, y: 7, width: 18, height: 18)
+        searchView.addSubview(searchImageV)
+        searchImageV.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(18)
+            make.left.equalTo(searchView).offset(7)
+            make.top.equalTo(searchView).offset(7)
+        }
+        
+        let qrImageV = UIImageView(image: UIImage(named: "qr_er_btn"))
+        searchView.addSubview(qrImageV)
+//        qrImageV.frame = CGRect(x: searchView.frame.size.width-7-18, y: 7, width: 18, height: 18)
+        qrImageV.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(18)
+            make.right.equalTo(searchView)
+            make.top.equalTo(searchView).offset(7)
+        }
+    }
 }
