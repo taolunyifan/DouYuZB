@@ -19,8 +19,8 @@ class PageView: UIView {
     }
     */
     private var childVcs:[UIViewController]
-    private var superVc:UIViewController
-    init(frame: CGRect,childVcs:[UIViewController],superVc:UIViewController) {
+    private weak var superVc:UIViewController?
+    init(frame: CGRect,childVcs:[UIViewController],superVc:UIViewController?) {
         self.childVcs = childVcs
         self.superVc = superVc
         super.init(frame: frame)
@@ -30,10 +30,10 @@ class PageView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private lazy var collectionView:UICollectionView = {
+    private lazy var collectionView:UICollectionView = {[weak self] in
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
-        layout.itemSize = bounds.size
+        layout.itemSize = (self?.bounds.size)!
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         
@@ -51,7 +51,7 @@ class PageView: UIView {
 extension PageView{
     private func setUI(){
         for vc in childVcs {
-            superVc.addChildViewController(vc)
+            superVc?.addChildViewController(vc)
         }
         collectionView.frame = bounds
         addSubview(collectionView)

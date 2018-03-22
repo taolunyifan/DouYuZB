@@ -10,6 +10,10 @@ import UIKit
 private let kScrollLineH:CGFloat = 2
 private let kBottomLineH:CGFloat = 0.5
 class TitleView: UIView {
+    private var currentIndex:Int = 0
+    private lazy var labels:[UILabel] = [UILabel]()
+    private var titles:[String]
+    
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
@@ -32,8 +36,7 @@ class TitleView: UIView {
         line.frame = CGRect(x: 0, y: bounds.height-kBottomLineH-kScrollLineH, width: width, height: kScrollLineH)
         return line
     }()
-    private lazy var labels:[UILabel] = [UILabel]()
-    private var titles:[String]
+    
     init(frame: CGRect,titles:[String] ) {
         self.titles = titles
         super.init(frame: frame)
@@ -71,6 +74,28 @@ extension TitleView{
             label.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
             scrollView.addSubview(label)
             labels.append(label)
+            
+            label.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(titleClicked))
+            label.addGestureRecognizer(tap)
+        }
+    }
+    @objc private func titleClicked(tap:UITapGestureRecognizer){
+        print(tap.description)
+        print("tap title")
+        guard let currentLabel = tap.view as? UILabel else {
+            return
+        }
+        let oldLabel = labels[currentIndex]
+        oldLabel.textColor = UIColor.darkGray
+        currentLabel.textColor = UIColor.orange
+        
+        currentIndex = currentLabel.tag
+        
+        let scrollLineX = CGFloat(currentIndex) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.25) {
+            self.scrollLine.frame.origin.x = scrollLineX
         }
     }
 }
+

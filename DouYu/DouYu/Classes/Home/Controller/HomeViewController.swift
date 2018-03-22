@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         return titleView
     }()
     private lazy var subVcs:[UIViewController] = [UIViewController]()
-    private lazy var pageView:PageView = {
+    private lazy var pageView:PageView = {[weak self] in
         let frame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH+kTitleViewH, width: kScreenW, height: kScreenH-kStatusBarH-kNavigationBarH-kTitleViewH-44)
         for _ in 0..<4{
             let vc = UIViewController()
