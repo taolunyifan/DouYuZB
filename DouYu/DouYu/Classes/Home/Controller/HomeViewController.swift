@@ -11,22 +11,26 @@ import SnapKit
 
 private let kTitleViewH:CGFloat = 40
 class HomeViewController: UIViewController {
-    private lazy var pageTitleView:TitleView = {
+    private lazy var pageTitleView:TitleView = {[weak self] in
         let titleViewFrame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐","游戏","娱乐","趣玩"]
         let titleView = TitleView(frame: titleViewFrame, titles: titles)
+        titleView.delegate = self
         return titleView
     }()
     private lazy var subVcs:[UIViewController] = [UIViewController]()
     private lazy var pageView:PageView = {[weak self] in
         let frame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH+kTitleViewH, width: kScreenW, height: kScreenH-kStatusBarH-kNavigationBarH-kTitleViewH-44)
-        for _ in 0..<4{
+        let redVC = RecommondViewController()
+        subVcs.append(redVC)
+        for _ in 0..<3{
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor.randomColor()
             subVcs.append(vc)
         }
         let pageView = PageView(frame: frame, childVcs: subVcs, superVc: self)
         pageView.backgroundColor = UIColor.purple
+        pageView.delegate = self
         return pageView
     }()
     override func viewDidLoad() {
@@ -97,5 +101,17 @@ extension HomeViewController{
 //            make.right.equalTo(searchView)
 //            make.top.equalTo(searchView).offset(7)
 //        }
+    }
+}
+extension HomeViewController:TitleViewDelegate{
+    func titleView(titleView: TitleView, currentIndex: Int) {
+        print(currentIndex)
+        pageView.setPageViewOffsetIndex(offsetIndex:currentIndex)
+    }
+}
+
+extension HomeViewController:PageViewDelegate{
+    func pageView(pageView: PageView, progress: CGFloat, startIndex: Int, endIndex: Int) {
+        pageTitleView.setTitle(progress:progress,startIndex:startIndex,endIndex:endIndex)
     }
 }

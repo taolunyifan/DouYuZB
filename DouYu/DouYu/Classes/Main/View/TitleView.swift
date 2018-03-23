@@ -7,12 +7,22 @@
 //
 
 import UIKit
+
 private let kScrollLineH:CGFloat = 2
 private let kBottomLineH:CGFloat = 0.5
+let kNormalColor:(CGFloat,CGFloat,CGFloat) = (115,115,115)
+let kSelectColor:(CGFloat,CGFloat,CGFloat) = (251,127,29)
+
+protocol TitleViewDelegate:class {
+    func titleView(titleView:TitleView,currentIndex:Int)
+}
+
 class TitleView: UIView {
     private var currentIndex:Int = 0
     private lazy var labels:[UILabel] = [UILabel]()
     private var titles:[String]
+    private var labelW:CGFloat = 0
+    weak var delegate:TitleViewDelegate?
     
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
@@ -29,7 +39,7 @@ class TitleView: UIView {
     }()
     private lazy var scrollLine:UIView = {
         let line = UIView()
-        line.backgroundColor = UIColor.orange
+        line.backgroundColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
         guard let width = labels.first?.frame.size.width else{
             return line
         }
@@ -57,18 +67,18 @@ extension TitleView{
         addSubview(bottomLine)
         addSubview(scrollLine)
         guard let firstLabel = labels.first else{return}
-        firstLabel.textColor = UIColor.orange
+        firstLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
     }
     private func setTitleLabels(){
         let labelY:CGFloat = 0
-        let labelW:CGFloat = frame.width / CGFloat(titles.count)
+        labelW = frame.width / CGFloat(titles.count)
         let labelH:CGFloat = frame.height - kScrollLineH
         for (index,title) in titles.enumerated() {
             let label = UILabel()
             label.text = title
             label.tag = index
             label.font = UIFont.systemFont(ofSize: 16)
-            label.textColor = UIColor.darkGray
+            label.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
             label.textAlignment = .center
             let labelX:CGFloat = CGFloat(index) * labelW
             label.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
@@ -87,8 +97,8 @@ extension TitleView{
             return
         }
         let oldLabel = labels[currentIndex]
-        oldLabel.textColor = UIColor.darkGray
-        currentLabel.textColor = UIColor.orange
+        oldLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
+        currentLabel.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
         
         currentIndex = currentLabel.tag
         
@@ -96,6 +106,21 @@ extension TitleView{
         UIView.animate(withDuration: 0.25) {
             self.scrollLine.frame.origin.x = scrollLineX
         }
+        delegate?.titleView(titleView:self,currentIndex:currentIndex)
     }
 }
 
+extension TitleView{
+    func setTitle(progress:CGFloat,startIndex:Int,endIndex:Int){
+        
+        let startLabel = labels[startIndex]
+        let endLabel = labels[endIndex]
+        let movex = endLabel.frame.origin.x - startLabel.frame.origin.x
+        scrollLine.frame.origin.x = startLabel.frame.origin.x + movex*progress
+        currentIndex = endIndex
+
+        let colorDelta = (kSelectColor.0 - kNormalColor.0,kSelectColor.1 - kNormalColor.1,kSelectColor.2 - kNormalColor.2)
+        startLabel.textColor = UIColor(r: kSelectColor.0-colorDelta.0*progress, g: kSelectColor.1-colorDelta.1*progress, b: kSelectColor.2-colorDelta.2*progress)
+        endLabel.textColor = UIColor(r: kNormalColor.0+colorDelta.0*progress, g: kNormalColor.1+colorDelta.1*progress, b: kNormalColor.2+colorDelta.2*progress)
+    }
+}
