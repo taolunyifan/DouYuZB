@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     }()
     private lazy var subVcs:[UIViewController] = [UIViewController]()
     private lazy var pageView:PageView = {[weak self] in
-        let frame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH+kTitleViewH, width: kScreenW, height: kScreenH-kStatusBarH-kNavigationBarH-kTitleViewH-44)
+        let frame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH+kTitleViewH, width: kScreenW, height: kScreenH-kStatusBarH-kNavigationBarH-kTitleViewH-kTabBarH)
         let redVC = RecommondViewController()
         subVcs.append(redVC)
         for _ in 0..<3{

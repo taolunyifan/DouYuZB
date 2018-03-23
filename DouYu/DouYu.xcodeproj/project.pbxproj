@@ -28,6 +28,10 @@
 		5FBF1F972060FD0500311155 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF1F962060FD0500311155 /* FollowViewController.swift */; };
 		5FBF1F992060FD2700311155 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF1F982060FD2700311155 /* ProfileViewController.swift */; };
 		5FDE43872064D67000631680 /* RecommondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDE43862064D67000631680 /* RecommondViewController.swift */; };
+		5FDE438A2064DF3400631680 /* RecommondVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDE43882064DF3400631680 /* RecommondVCHeaderView.swift */; };
+		5FDE438B2064DF3400631680 /* RecommondVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDE43892064DF3400631680 /* RecommondVCHeaderView.xib */; };
+		5FDE438E2064E73900631680 /* CollectionViewNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDE438C2064E73900631680 /* CollectionViewNormalCell.swift */; };
+		5FDE438F2064E73900631680 /* CollectionViewNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDE438D2064E73900631680 /* CollectionViewNormalCell.xib */; };
 		6DD5D6ED52FD4D213B4839EC /* Pods_DouYuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8509943228BE03797656F8D /* Pods_DouYuUITests.framework */; };
 		70C1C110A184EB8ACE21D076 /* Pods_DouYuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F73A82468267ABD4E0A7757 /* Pods_DouYuTests.framework */; };
 		CF268DF9691EA14694CBA1AD /* Pods_DouYu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697F462B79FBB576F793E7F3 /* Pods_DouYu.framework */; };
@@ -81,6 +85,10 @@
 		5FBF1F962060FD0500311155 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
 		5FBF1F982060FD2700311155 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5FDE43862064D67000631680 /* RecommondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommondViewController.swift; sourceTree = "<group>"; };
+		5FDE43882064DF3400631680 /* RecommondVCHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommondVCHeaderView.swift; sourceTree = "<group>"; };
+		5FDE43892064DF3400631680 /* RecommondVCHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommondVCHeaderView.xib; sourceTree = "<group>"; };
+		5FDE438C2064E73900631680 /* CollectionViewNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewNormalCell.swift; sourceTree = "<group>"; };
+		5FDE438D2064E73900631680 /* CollectionViewNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewNormalCell.xib; sourceTree = "<group>"; };
 		697F462B79FBB576F793E7F3 /* Pods_DouYu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DouYu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E435F6004ED2376189BE274 /* Pods-DouYuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DouYuUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DouYuUITests/Pods-DouYuUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F73A82468267ABD4E0A7757 /* Pods_DouYuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DouYuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +298,8 @@
 			children = (
 				5F0A86E7206237E2001549B9 /* TitleView.swift */,
 				5F69361320625A60007E4DA3 /* PageView.swift */,
+				5FDE438C2064E73900631680 /* CollectionViewNormalCell.swift */,
+				5FDE438D2064E73900631680 /* CollectionViewNormalCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +331,8 @@
 		5FBF1F882060FBCA00311155 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5FDE43882064DF3400631680 /* RecommondVCHeaderView.swift */,
+				5FDE43892064DF3400631680 /* RecommondVCHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -510,7 +522,9 @@
 				5FBF1F452060B1B400311155 /* LaunchScreen.storyboard in Resources */,
 				5FBF1F422060B1B400311155 /* Assets.xcassets in Resources */,
 				5FBF1F402060B1B400311155 /* Main.storyboard in Resources */,
+				5FDE438B2064DF3400631680 /* RecommondVCHeaderView.xib in Resources */,
 				5FBF1F762060ED0C00311155 /* Live.storyboard in Resources */,
+				5FDE438F2064E73900631680 /* CollectionViewNormalCell.xib in Resources */,
 				5FBF1F732060ECD600311155 /* Home.storyboard in Resources */,
 				5FBF1F7C2060ED3B00311155 /* Profile.storyboard in Resources */,
 				5FBF1F792060ED2500311155 /* Follow.storyboard in Resources */,
@@ -695,7 +709,9 @@
 				5FBF1F972060FD0500311155 /* FollowViewController.swift in Sources */,
 				5F0A86EB20623C19001549B9 /* Common.swift in Sources */,
 				5FBF1F952060FC7E00311155 /* LiveViewController.swift in Sources */,
+				5FDE438E2064E73900631680 /* CollectionViewNormalCell.swift in Sources */,
 				5FBF1F932060FC4B00311155 /* HomeViewController.swift in Sources */,
+				5FDE438A2064DF3400631680 /* RecommondVCHeaderView.swift in Sources */,
 				5F0A86E620610A61001549B9 /* UIBarButtonItem_Extension.swift in Sources */,
 				5F69361420625A60007E4DA3 /* PageView.swift in Sources */,
 				5F0A86E8206237E2001549B9 /* TitleView.swift in Sources */,
