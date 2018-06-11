@@ -13,7 +13,7 @@ private let kTitleViewH:CGFloat = 40
 class HomeViewController: UIViewController {
     private lazy var pageTitleView:TitleView = {[weak self] in
         let titleViewFrame = CGRect(x: 0, y: kStatusBarH+kNavigationBarH, width: kScreenW, height: kTitleViewH)
-        let titles = ["推荐","游戏","娱乐","趣玩1"]
+        let titles = ["推荐","游戏","娱乐","趣玩"]
         let titleView = TitleView(frame: titleViewFrame, titles: titles)
         titleView.delegate = self
         return titleView
